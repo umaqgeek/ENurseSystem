@@ -32,6 +32,9 @@
                         <a href="<?=site_url('staffs/index/manageBed'); ?>">Manage Bed</a>
                     </li>
                     <li>
+                        <a href="<?=site_url('staffs/index/manageGender'); ?>">Manage Gender</a>
+                    </li>
+                    <li>
                         <a href="<?=site_url('login/logout'); ?>">Logout</a>
                     </li>
                 </ul>

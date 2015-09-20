@@ -11,7 +11,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand topnav" href="#">Home Page</a>
+                <a class="navbar-brand topnav" href="<?=site_url('login'); ?>">Home Page</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -20,16 +20,13 @@
                         <a href="#about">About</a>
                     </li>-->
                     <li>
-                        <a href="#background">Background</a>
+                        <a href="<?=site_url('login/dashboard'); ?>">Dashboard</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="<?=site_url('login/searchPatient'); ?>">Search Patient</a>
                     </li>
                     <li>
-                        <a href="#product">Products</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
+                        <a href="<?=site_url('login'); ?>">Login</a>
                     </li>
                 </ul>
             </div>

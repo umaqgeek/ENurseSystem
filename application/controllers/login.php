@@ -6,6 +6,7 @@ class Login extends CI_Controller
 	function __construct()
 	{
             parent::__construct(); 
+            $this->load->model('m_nus_bed');
 	}
         
         private function viewpage($page='v_login', $data=array())
@@ -35,6 +36,36 @@ class Login extends CI_Controller
 	{
             $this->viewpage();
 	}
+        
+        public function searchPatient($stat=-1)
+        {
+            if ($stat != -1) {
+                $ser = $this->input->post('ser');
+                $this->load->model('m_nus_patient');
+                $patient = $this->m_nus_patient->getPatient($ser);
+                $data['patient'] = $patient;
+                echo $this->load->view('login/ajax/v_ajax_search_detail', $data, true);
+            } else {
+                $this->viewpage('v_search_patient');
+            }
+        }
+        
+        public function dashboard()
+        {
+            $this->viewpage('v_dashboard');
+        }
+        
+        function getAjaxDashboard()
+        {
+            $this->load->model('m_nus_bed');
+            $this->load->model('m_nus_bed_status');
+            $this->load->model('m_nus_patient_gender');
+            $data['wards'] = $this->m_conndb->getAll('nus_ward');
+            $data['wards2'] = $this->m_conndb->getAll('nus_ward');
+            $data['status'] = $this->m_nus_bed_status->getAll();
+            $data['gender'] = $this->m_nus_patient_gender->getAll();
+            echo $this->load->view('login/ajax/v_ajax_dashboard', $data, true);
+        }
         
         function checklogin()
         {

@@ -1,5 +1,6 @@
 
-
+        
+        
 <?php 
 foreach($css_files as $file): ?>
 	<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
@@ -9,3 +10,5 @@ foreach($css_files as $file): ?>
 <?php endforeach; ?>
         
 <?php echo $output; ?>
+
+

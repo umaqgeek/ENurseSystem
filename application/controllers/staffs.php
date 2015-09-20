@@ -18,15 +18,15 @@ class Staffs extends MY_Controller
             // check for the flashdata
             $error = $this->session->flashdata('error');
             if ($error != "") {
-                $data['error'] = $error;
+                $data->error = $error;
             }
             $sucess = $this->session->flashdata('sucess');
             if ($sucess != "") {
-                $data['sucess'] = $sucess;
+                $data->sucess = $sucess;
             }
             $info = $this->session->flashdata('info');
             if ($info != "") {
-                $data['info'] = $info;
+                $data->info = $info;
             }
                 
             echo $this->load->view('v_header', $data, true);
@@ -60,8 +60,10 @@ class Staffs extends MY_Controller
                     case 'manageWadStatus':
                         $crud->set_table('nus_bed_status');
                         $crud->display_as('nbs_desc', 'Description')
-                                ->display_as('nbs_code', 'Code');
-                        $crud->required_fields('nbs_code', 'nbs_desc');
+                                ->display_as('nbs_code', 'Code')
+                                ->display_as('nc_id', 'Color');
+                        $crud->required_fields('nbs_code', 'nbs_desc', 'nc_id');
+                        $crud->set_relation('nc_id', 'nus_color', 'nc_desc');
                         break;
                     case 'manageWard':
                         $crud->set_table('nus_ward');
@@ -72,8 +74,22 @@ class Staffs extends MY_Controller
                         $crud->set_table('nus_bed');
                         $crud->set_relation('nw_id', 'nus_ward', 'nw_name');
                         $crud->display_as('nb_bed_no', 'Bed No.')
-                                ->display_as('nw_id', 'Ward Name');
+                                ->display_as('nw_id', 'Ward Name')
+                                ->display_as('np_pmi_id', 'Patient Name')
+                                ->display_as('nbs_id', 'Bed Status')
+                                ->display_as('nb_datetime', 'Registered Date/Time')
+                                ->display_as('ns_id', 'Nurse Incharge');
                         $crud->required_fields('nb_bed_no', 'nw_id');
+                        $crud->set_relation('np_pmi_id', 'nus_patient', 'np_fullname');
+                        $crud->set_relation('nbs_id', 'nus_bed_status', 'nbs_desc');
+                        $crud->set_relation('ns_id', 'nus_staff', 'ns_fullname');
+                        break;
+                    case 'manageGender':
+                        $crud->set_table('nus_patient_gender');
+                        $crud->display_as('npg_desc', 'Description')
+                                ->display_as('npg_code', 'Code')
+                                ->display_as('nc_id', 'Color');
+                        $crud->set_relation('nc_id', 'nus_color', 'nc_desc');
                         break;
                 }
 

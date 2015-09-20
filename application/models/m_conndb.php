@@ -13,10 +13,10 @@
 		  }
 	  }
 	  
-	  function get($table, $pri, $id) {
+	  function get($table, $col, $id) {
 		  $this->db->select('*');
 		  $this->db->from($table);
-		  $this->db->where($pri, $id);
+		  $this->db->where($col, $id);
 		  $q = $this->db->get();
 		  if($q->num_rows() > 0) {
 			  foreach($q->result() as $r) {

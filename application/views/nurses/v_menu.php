@@ -20,7 +20,10 @@
                         <a href="#about">About</a>
                     </li>-->
                     <li>
-                        <a href="<?=site_url('nurses/index'); ?>">Register Patient</a>
+                        <a href="<?=site_url('nurses/index'); ?>">Register Ward</a>
+                    </li>
+                    <li>
+                        <a href="<?=site_url('nurses/index/patient'); ?>">Register Patient</a>
                     </li>
                     <li>
                         <a href="<?=site_url('login/logout'); ?>">Logout</a>
